@@ -1,6 +1,5 @@
 package com.google.rodrigofreund.cadastrorisco.service;
 
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,25 +18,11 @@ public class CadastroClienteRiscoService {
     @Autowired
     private RiscoClienteRepository repository;
 
-    public RiscoCliente salvarCadastroClienteRisco(@Valid CadastroClienteRiscoDto dto) throws BusinessException {
-        return repository.save(RiscoCliente.builder()
-                .limiteCredito(dto.getLimiteCreditoCliente())
-                .nome(dto.getNomeCliente())
-                .risco(dto.getRiscoCliente())
-                .juros(calculaTaxaJuros(dto))
-                .build());
-    }
+    @Autowired
+    private CalculoJurosService calculoJurosService;
 
-    private Integer calculaTaxaJuros(CadastroClienteRiscoDto dto) throws BusinessException {
-        switch (dto.getRiscoCliente()) {
-        case A:
-            return null;
-        case B:
-            return 10;
-        case C:
-            return 20;
-        default:
-            throw new BusinessException("Risco do cliente inválido!");
-        }
+    public RiscoCliente salvarCadastroClienteRisco(@Valid CadastroClienteRiscoDto dto) throws BusinessException {
+        return repository.save(RiscoCliente.builder().limiteCredito(dto.getLimiteCreditoCliente())
+                .nome(dto.getNomeCliente()).risco(dto.getRiscoCliente()).juros(calculoJurosService.calculaTaxaJuros(dto.getRiscoCliente())).build());
     }
 }

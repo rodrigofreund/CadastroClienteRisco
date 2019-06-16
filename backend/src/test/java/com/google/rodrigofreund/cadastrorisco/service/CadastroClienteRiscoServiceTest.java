@@ -2,7 +2,6 @@ package com.google.rodrigofreund.cadastrorisco.service;
 
 import java.math.BigDecimal;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -21,26 +20,23 @@ public class CadastroClienteRiscoServiceTest {
 
     @Mock
     private RiscoClienteRepository repository;
+    
+    @Mock
+    private CalculoJurosService calculoJurosService;
 
     @InjectMocks
     private CadastroClienteRiscoService service;
 
-    @Test(expected = BusinessException.class)
-    public void testeSemInformacoes() throws BusinessException {
-        CadastroClienteRiscoDto dto = Mockito.mock(CadastroClienteRiscoDto.class);
-        service.salvarCadastroClienteRisco(dto);
-    }
-
-    @Test(expected = BusinessException.class)
+    @Test
     public void testeCadastroRisco() throws BusinessException {
         Mockito.when(repository.save(Mockito.any(RiscoCliente.class))).thenReturn(RiscoCliente.builder().id(1l)
                 .limiteCredito(new BigDecimal("1000")).nome("Nome do Cliente").juros(20).build());
         CadastroClienteRiscoDto dto = CadastroClienteRiscoDto.builder().nomeCliente("Nome do Cliente")
                 .limiteCreditoCliente(new BigDecimal("520")).riscoCliente(TipoRisco.C).build();
 
-        RiscoCliente result = service.salvarCadastroClienteRisco(dto);
+        service.salvarCadastroClienteRisco(dto);
 
-        Assert.assertEquals(dto.getNomeCliente(), result.getNome());
+        Mockito.verify(repository).save(Mockito.any(RiscoCliente.class));
     }
 
 }

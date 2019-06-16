@@ -6,7 +6,11 @@ Aplicação frontend usando HTML5, AngularJS 1.7.8, Bootstrap 4.0.0
 
 Dependências: npm
 
-Edereço: http://localhost:8080/
+Exeução: 
+$npm install
+$node index.js
+
+Endereço: http://localhost:8080/
 
 
 # Backend

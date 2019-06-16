@@ -1,2 +1,6 @@
 backend/CadastroRisco/target/
 frontend/CadastroRisco/node_modules/
+backend/.classpath
+backend/.project
+backend/target
+backend/.settings

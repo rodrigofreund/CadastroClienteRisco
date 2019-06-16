@@ -1,16 +1,14 @@
 # CadastroClienteRisco
 Teste para seleção emprego Rodrigo Freund de Moraes
 
-#Frontend
+# Frontend
 Aplicação frontend usando HTML5, AngularJS 1.7.8, Bootstrap 4.0.0
 
-$npm install
-$node index.js
+Dependências: npm
 
-Abrir o browser no endereço http://localhost:8080/
+Edereço: http://localhost:8080/
 
 
-#Backend
-Aplicação Java usando JDK1.8 Springboot 2.1.4
+# Backend
+Aplicação Java usando JDK 1.8 e Springboot 2.1.4
 
-$mvn -U install

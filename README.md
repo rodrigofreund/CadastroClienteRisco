@@ -10,5 +10,9 @@ Edereço: http://localhost:8080/
 
 
 # Backend
-Aplicação Java usando JDK 1.8 e Springboot 2.1.4
+Aplicação Java usando JDK 1.8 e Springboot 2.1.4 
 
+# Bando de Dados
+MySQL 5.6.32
+
+Ajustar as configurações do banco de dados no arquivo application.properties da aplicação backend.

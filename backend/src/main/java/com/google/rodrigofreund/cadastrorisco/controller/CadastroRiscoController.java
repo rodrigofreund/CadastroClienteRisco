@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.rodrigofreund.cadastrorisco.dto.CadastroClienteRiscoDto;
+import com.google.rodrigofreund.cadastrorisco.exception.BusinessException;
 import com.google.rodrigofreund.cadastrorisco.service.CadastroClienteRiscoService;
 
 @RestController
@@ -19,7 +20,7 @@ public class CadastroRiscoController {
 
     @CrossOrigin(origins = "http://localhost:8080")
     @PutMapping(value = "cadastrarClienteRisco")
-    public void cadastrarClienteRisco(@RequestBody CadastroClienteRiscoDto cadastroClienteRiscoDto) {
+    public void cadastrarClienteRisco(@RequestBody CadastroClienteRiscoDto cadastroClienteRiscoDto) throws BusinessException {
         service.salvarCadastroClienteRisco(cadastroClienteRiscoDto);
     }
 }

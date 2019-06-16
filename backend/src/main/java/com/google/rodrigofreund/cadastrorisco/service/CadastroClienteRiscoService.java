@@ -1,20 +1,26 @@
 package com.google.rodrigofreund.cadastrorisco.service;
 
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import com.google.rodrigofreund.cadastrorisco.dto.CadastroClienteRiscoDto;
+import com.google.rodrigofreund.cadastrorisco.exception.BusinessException;
 import com.google.rodrigofreund.cadastrorisco.model.RiscoCliente;
 import com.google.rodrigofreund.cadastrorisco.repository.RiscoClienteRepository;
 
 @Service
+@Validated
 public class CadastroClienteRiscoService {
 
     @Autowired
     private RiscoClienteRepository repository;
 
-    public void salvarCadastroClienteRisco(CadastroClienteRiscoDto dto) {
-        repository.save(RiscoCliente.builder()
+    public RiscoCliente salvarCadastroClienteRisco(@Valid CadastroClienteRiscoDto dto) throws BusinessException {
+        return repository.save(RiscoCliente.builder()
                 .limiteCredito(dto.getLimiteCreditoCliente())
                 .nome(dto.getNomeCliente())
                 .risco(dto.getRiscoCliente())
@@ -22,7 +28,7 @@ public class CadastroClienteRiscoService {
                 .build());
     }
 
-    private Integer calculaTaxaJuros(CadastroClienteRiscoDto dto) {
+    private Integer calculaTaxaJuros(CadastroClienteRiscoDto dto) throws BusinessException {
         switch (dto.getRiscoCliente()) {
         case A:
             return null;
@@ -31,8 +37,7 @@ public class CadastroClienteRiscoService {
         case C:
             return 20;
         default:
-            return null;
-
+            throw new BusinessException("Risco do cliente inválido!");
         }
     }
 }

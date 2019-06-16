@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Cadastro Risco Cliente</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container" ng-app="cadastroriscocliente.module" ng-controller="cadastroriscocliente.controller">
+        <h1>Cadastro Risco Cliente</h1>
+        <div id="successmsg" class="alert alert-success" role="alert" style="display:none">
+            Registro salvo com sucesso.
+        </div>
+        <div id="errormsg" class="alert alert-danger" role="alert" style="display:none">
+            Erro ao salvar o registro.
+        </div>
+        <form ng-submit="salvarCadastroClienteRisco()">
+            <div class="form-group">
+                <label for="inNomeCliente">Nome Cliente: </label>
+                <input class="form-control" id="inNomeCliente" type="text" ng-model="nomeCliente" maxlength="200" required />
+            </div>
+            <div class="form-group">
+                <label for="inLimiteCredito">Limite Crédito: </label>
+                <input class="form-control" id="inLimiteCredito" type="number" ng-model="limiteCreditoCliente" required />
+            </div>
+            <div class="form-group">
+                <label for="selRisco">Risco: </label>
+                <select class="form-control" id="selRisco" required ng-model="riscoCliente">
+                    <option value="">Selecione o Risco</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="app/cadastro-risco-cliente.controller.js"></script>
+<script src="app/cadastro-risco-cliente.service.js"></script>
+
+</html>

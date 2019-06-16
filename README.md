@@ -11,6 +11,6 @@ Abrir o browser no endereço http://localhost:8080/
 
 
 #Backend
-Aplicação Java usando JDK1.8 Springboot 2.4.3
+Aplicação Java usando JDK1.8 Springboot 2.1.4
 
 $mvn -U install
